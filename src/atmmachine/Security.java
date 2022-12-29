@@ -19,14 +19,13 @@ public class Security {
     public static String encrypt(String pin) {
         String encryptedPin = "";
         try {
-            /* MessageDigest instance for MD5. */
-            MessageDigest m = MessageDigest.getInstance("MD5");
+            //MessageDigest --> This class provides applications the functionality of a message digest algorithm, such as SHA-1 or SHA-256.
+            MessageDigest m = MessageDigest.getInstance("MD5"); //MD5 hashing algorithm
 
             /* Add plain-text password bytes to digest using MD5 update() method. */
             m.update(pin.getBytes());
 
-            /* Convert the hash value into bytes */
-            byte[] bytes = m.digest();
+            byte[] bytes = m.digest();  //Convert the hash value into byte
 
             /* The bytes array has bytes in decimal form. Converting it into hexadecimal format. */
             StringBuilder s = new StringBuilder();
@@ -40,14 +39,6 @@ public class Security {
             e.printStackTrace();
         }
         return encryptedPin;
-    }
-
-    public static void main(String[] args) {
-        String inp;
-        Scanner in = new Scanner(System.in);
-        inp = in.nextLine();
-        System.out.println(encrypt(inp));
-
     }
 }
 

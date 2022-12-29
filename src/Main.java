@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static int menu() {
+    public static int menu() { //prints the menu for the user to choose from, and returns the choice
         Scanner in = new Scanner(System.in);
         int cho;
 
@@ -19,7 +19,7 @@ public class Main {
             Logging.writeLog(3, 0, card);
             return true;
         } else {
-            System.out.println("Username and/or password couldn't be matched.");
+            System.out.println("Username and/or password couldn't be matched."); //if username and/or password are wrong
             return false;
         }
     }
@@ -38,10 +38,9 @@ public class Main {
         //todo: If login is admin --> add admin actions
         if (login(decryptedPin, cardnumber)) {
             switch (menu()) {
-            
+
             }
 
         }
     }
-
 }

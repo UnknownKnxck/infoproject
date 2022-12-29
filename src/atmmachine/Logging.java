@@ -14,10 +14,10 @@ public class Logging {
 
 
     public static void writeLog(int type, double amount, String cardnumber) {
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //get current time and date (YYYY-MM-DD HH:MM:SS.MS)
         String log = "";
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("./src/atmmachine/logging.log", true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("./src/atmmachine/logging.log", true))) { //if file doesn't exist, create it
             switch (type) {
                 case 1 -> log = "[" + cardnumber + "]: " + "Deposit -> " + amount + "$ ";
                 case 2 -> log = "[" + cardnumber + "]: " + "Withdrawal -> " + amount + "$ ";
@@ -27,7 +27,7 @@ public class Logging {
             }
             bw.write(log + "(" + timestamp + ")");
             bw.newLine();
-        } catch (IOException e) {
+        } catch (IOException e) { //if file can't be created
             e.printStackTrace();
         }
     }

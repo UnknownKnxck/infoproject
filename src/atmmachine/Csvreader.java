@@ -12,32 +12,26 @@ public class Csvreader {
         this.inputUsername = username;
     }
 
-    static String fileName = "./src/atmmachine/users.csv";
+    static String fileName = "./src/atmmachine/users.csv"; //static log file path
 
     public static String readpin(String cardnr) {
         // Read the CSV file
         String line = "";
-        String csvSplitBy = ";";
+        String csvSplitBy = ";"; //symbol that separates the values in the csv file
 
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-
-
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) { //try to read the file (if it exists)
             // Search for the username in the CSV file
             while ((line = br.readLine()) != null) {
-                String[] userData = line.split(csvSplitBy);
+                String[] userData = line.split(csvSplitBy); //split the line into an array
                 String username = userData[0];
-                String pin
-                        = userData[1];
+                String pin = userData[1];
 
                 if (username.equals(cardnr)) {
                     // Found a matching username, return pin                   
                     return pin;
                 }
             }
-            if (line == null) {
-                // No matching username was found
-            }
-        } catch (IOException e) {
+        } catch (IOException e) { //if file can't be read
             e.printStackTrace();
         }
         return null;
