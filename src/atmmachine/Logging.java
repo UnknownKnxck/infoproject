@@ -3,6 +3,7 @@ package atmmachine;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Timestamp;
 
 public class Logging {
     private double balance;
@@ -12,10 +13,19 @@ public class Logging {
     }
 
 
-    public static void writeLog(String transactionType, double amount, String cardnumber) {
+    public static void writeLog(int type, double amount, String cardnumber) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String log = "";
+
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("./src/atmmachine/logging.log", true))) {
-            String transaction = String.format("%s: %s %.2f", cardnumber, transactionType, amount);
-            bw.write(transaction);
+            switch (type) {
+                case 1 -> log = "[" + cardnumber + "]: " + "Deposit -> " + amount + "$ ";
+                case 2 -> log = "[" + cardnumber + "]: " + "Withdrawal -> " + amount + "$ ";
+                case 3 -> log = "[" + cardnumber + "]: " + "Login ";
+                case 4 -> log = "[" + cardnumber + "]: " + "Logout ";
+                case 5 -> log = "[" + cardnumber + "]: " + "Balance check ";
+            }
+            bw.write(log + "(" + timestamp + ")");
             bw.newLine();
         } catch (IOException e) {
             e.printStackTrace();
