@@ -1,6 +1,7 @@
 package atmmachine;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -12,7 +13,7 @@ public class Csvreader {
         this.inputUsername = username;
     }
 
-    static String fileName = "./src/atmmachine/users.csv"; //static log file path
+    static File fileName = new File("./src/atmmachine/users.csv"); //static log file path
 
     public static String readpin(String cardnr) {
         // Read the CSV file
@@ -35,5 +36,16 @@ public class Csvreader {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void addCustomer(String customer, String password) {
+        //Write to the CSV file
+
+
+
+    }
+
+    public void removeCustomer(Customer customer) {
+        // Remove the customer from the database
     }
 }

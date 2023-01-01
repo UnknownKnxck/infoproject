@@ -9,15 +9,15 @@ public class ATM {
         this.name = name;
     }
 
-    public String sprengung() {
+    public String blowUp() {
         //MAKE THE POSSIBILITY 1/100 OF A BOMB TO EXPLODE
 
         Random r = new Random();
         int random = r.nextInt(100);
         if (random == 1) {
-            return "Automat " + name + " wurde erfolgreich gesprengt";
+            return "ATM " + name + " was blown up successfully!";
         } else {
-            return "nothing";
+            return "ATM " + name + " was not blown up!";
         }
     }
 
