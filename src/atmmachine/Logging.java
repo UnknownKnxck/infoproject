@@ -25,6 +25,7 @@ public class Logging {
                 case 4 -> log = "[" + cardnumber + "]: " + "Logout ";
                 case 5 -> log = "[" + cardnumber + "]: " + "Balance check ";
                 case 6 -> log = "[" + cardnumber + "]: " + "filled up ATM ";
+                case 7 -> log = "[" + cardnumber + "]: " + "Invalid option ";
             }
             bw.write(log + "(" + timestamp + ")");
             bw.newLine();
