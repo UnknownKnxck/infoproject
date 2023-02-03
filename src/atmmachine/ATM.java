@@ -3,13 +3,15 @@ package atmmachine;
 import java.util.Random;
 
 public class ATM {
-    public String name;
+    public static String name;
+    public static double currentMoney;
 
-    public ATM(String name) {
+    public ATM(String name, double money) {
         this.name = name;
+        this.currentMoney = money;
     }
 
-    public String blowUp() {
+    public static String blowUp() {
         //MAKE THE POSSIBILITY 1/100 OF A BOMB TO EXPLODE
 
         Random r = new Random();
@@ -17,20 +19,15 @@ public class ATM {
         if (random == 1) {
             return "ATM " + name + " was blown up successfully!";
         } else {
-            return "ATM " + name + " was not blown up!";
+            return "You tried to rob the ATM " + name + ". Unfortunately you got caught by us.\nWe called 112.\nThe police is on its way.";
         }
     }
 
-    public void withdraw(String cardnumber) {
-
-
+    public static void subtractMoney(double amount) {
+        currentMoney -= amount;
     }
 
-    public void deposit() {
-    }
-
-    public boolean login() {
-
-        return false;
+    public static void addMoney(double amount) {
+        currentMoney += amount;
     }
 }

@@ -11,12 +11,13 @@ public class Admin {
         this.password = Security.encrypt(password);
     }
 
-    public void addCustomer(String customer, String password) {
+    public static void addCustomer(String card, String pin) {
+
 
     }
 
-    public void removeCustomer(Customer customer) {
+    public static void removeCustomer(String card) {
         // Remove the customer from the database
     }
-}
 
+}

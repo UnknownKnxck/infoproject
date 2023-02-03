@@ -40,7 +40,16 @@ public class Security {
         }
         return encryptedPin;
     }
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the pin: ");
+        String pin = sc.nextLine();
+        System.out.println("Encrypted pin: " + Security.encrypt(pin));
+    }
 }
+
+
 
 
 

@@ -1,3 +1,4 @@
-#cardnr;password;blocked
-12345678;827ccb0eea8a706c4c34a16891f84e7b;true
-fitti;sakljd;false
+#cardnr;password;admin
+12345678;827ccb0eea8a706c4c34a16891f84e7b;false
+admin;202cb962ac59075b964b07152d234b70;true
+23456789;c4ca4238a0b923820dcc509a6f75849b;false
