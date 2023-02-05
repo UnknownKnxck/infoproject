@@ -10,10 +10,12 @@ public class Customer {
         this.balance = Csvreader.getBalance(cardnumber);
     }
 
-    public static void withdraw(double amount) {
+    //TODO: WRITE NEW BALANCE IN CSV FILE
+    public static void withdraw(double amount, String cardnumber) {
         // Withdraw the amount from the balance
-        if (amount > balance) {
-            System.out.println("Withdraw amount exceeded account balance");
+        if (amount > balance || amount > ATM.currentMoney) {
+            System.out.println("Withdraw amount exceeds allowed amount.");
+            Logging.writeLog(10, amount, cardnumber, "");
             return;
         }
         balance = balance - amount;

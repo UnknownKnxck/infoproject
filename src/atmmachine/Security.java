@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  * This class is used to encrypt passwords.
- */
+ **/
 
 public class Security {
     String pin = "";
@@ -39,6 +39,12 @@ public class Security {
             e.printStackTrace();
         }
         return encryptedPin;
+    }
+
+    //TODO: Lock user after 3 attempts to login with false pin
+
+    public static void lockUser(String cardnumber) {
+
     }
 
     public static void main(String args[]) {

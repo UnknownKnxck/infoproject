@@ -71,7 +71,7 @@ public class Main {
                 case 2 -> {
                     System.out.println("How much would you like to withdraw? ");
                     amount = in.nextDouble();
-                    Customer.withdraw(amount);
+                    Customer.withdraw(amount, cardnumber);
                     Logging.writeLog(1, amount, cardnumber, "");
                 }
                 case 3 -> {
@@ -101,7 +101,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String cardnumber, decryptedPin;
+        String cardnumber = null, decryptedPin = null;
 
         ATM atm = new ATM("Sterzing", 1500);
 

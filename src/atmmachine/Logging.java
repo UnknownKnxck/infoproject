@@ -5,6 +5,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Timestamp;
 
+/**
+ * This class is used to log every action the user is doing.
+ */
 public class Logging {
     private double balance;
 
@@ -35,6 +38,7 @@ public class Logging {
                 case 7 -> log = "[" + cardnumber + "]: " + "Invalid option ";
                 case 8 -> log = "[" + cardnumber + "]: " + "Added user [" + user + "] ";
                 case 9 -> log = "[" + cardnumber + "]: " + "Delete user [" + user + "]";
+                case 10 -> log = "[" + cardnumber + "]: " + "Tried to withdraw " + amount + "€ ";
             }
             bw.write(log + "(" + timestamp + ")"); //write timestamp to file
             bw.newLine();

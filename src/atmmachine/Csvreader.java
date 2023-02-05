@@ -3,6 +3,9 @@ package atmmachine;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * This class is used to get Data from a CSV File
+ */
 
 public class Csvreader {
     static String inputUsername;
