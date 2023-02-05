@@ -1,6 +1,7 @@
 package atmmachine;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class ATM {
     public static String name;
@@ -27,7 +28,21 @@ public class ATM {
         currentMoney -= amount;
     }
 
-    public static void addMoney(double amount) {
-        currentMoney += amount;
+    public static double addMoney() {
+        Scanner in = new Scanner(System.in);
+        double amount = 0;
+        System.out.println("Enter Amount of money you would like to add to the ATM: ");
+        try {
+            amount = in.nextDouble();
+            if (currentMoney + amount > 15000) {
+                System.out.println("Due to security reasons, exceeding an total amount of 15000€ isn't allowed.");
+            } else {
+                currentMoney += amount;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input.");
+        }
+
+        return amount;
     }
 }

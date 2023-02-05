@@ -25,7 +25,7 @@ public class Logging {
             switch (type) {
                 case 1 -> {
                     log = "[" + cardnumber + "]: " + "Deposit -> " + amount + "$ ";
-                    ATM.addMoney(amount);
+                    ATM.addMoney();
                 }
                 case 2 -> {
                     log = "[" + cardnumber + "]: " + "Withdrawal -> " + amount + "$ ";

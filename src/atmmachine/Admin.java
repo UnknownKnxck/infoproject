@@ -1,6 +1,6 @@
 package atmmachine;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Admin {
     public String name;
@@ -11,13 +11,28 @@ public class Admin {
         this.password = Security.encrypt(password);
     }
 
-    public static void addCustomer(String card, String pin) {
+    public static String[] addCustomer() {
+        //Input of cardnumber and pin
+        Scanner input = new Scanner(System.in);
 
+        System.out.print("Enter cardnumber you would like to add: ");
+        String cardnumber = input.nextLine();
+
+        System.out.print("Enter pin of the user: ");
+        String pin = Security.encrypt(input.nextLine());
+
+        return new String[]{cardnumber, pin};
 
     }
 
-    public static void removeCustomer(String card) {
-        // Remove the customer from the database
-    }
 
+    public static String[] deleteCustomer() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter cardnumber you would like to remove: ");
+        String cardnumber = input.nextLine();
+
+
+        return new String[]{cardnumber, null};
+    }
 }
