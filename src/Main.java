@@ -12,19 +12,25 @@ public class Main {
         try {
             customers = Customer.createCustomers();
         } catch (IOException e) {
+            System.out.println("asjhidskjahjksd");
             throw new RuntimeException(e);
         }
     }
 
 
-    public static void arrayListManager(int option, String[] user) {
+    public static void arrayListManager(int option, String[] user) throws IOException {
         switch (option) {
-            case 1 -> customers.add(new Customer(user[0], Security.encrypt(user[1]), 0, false));
+            case 1 -> {
+                customers.add(new Customer(user[0], Security.encrypt(user[1]), Double.valueOf(user[2]), Boolean.valueOf(user[3])));
+                CSVHandler.addCustomerToCSV(customers.get(customers.size()-1));
+            }
             case 2 -> {
                 for (Customer c : customers) {
                     if (user[0].equals(c.cardnumber)) {
+                        CSVHandler.deleteLine(c.cardnumber);
                         customers.remove(c);
                     } else {
+                        //FIX: PRINTS THIS SOMETIMES AFTER REMOVING
                         System.out.println("Couldn't find user.");
                     }
                 }
@@ -55,7 +61,6 @@ public class Main {
                 case 2 -> {
                     String user[] = Admin.deleteCustomer();
                     arrayListManager(2, user);
-                    CSVHandler.removeCustomerFromCSV(c.cardnumber);
                     Logging.writeLog(9, 0, c.cardnumber, "");
                 }
                 case 3 -> {

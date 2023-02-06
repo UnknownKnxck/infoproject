@@ -21,7 +21,13 @@ public class Admin {
         System.out.print("Enter pin of the user: ");
         String pin = Security.encrypt(input.nextLine());
 
-        return new String[]{cardnumber, pin};
+        System.out.print("Enter balance of the user: ");
+        String balance = input.nextLine();
+
+        String admin = "false";
+
+
+        return new String[]{cardnumber, pin, balance, admin};
 
     }
 

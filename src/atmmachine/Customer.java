@@ -10,6 +10,7 @@ public class Customer {
     public String cardnumber, pin;
     public double balance;
     public boolean admin;
+
     public Customer(String cardnumber, String pin, double balance, boolean isAdmin) {
         this.cardnumber = cardnumber;
         this.pin = pin;
@@ -30,6 +31,7 @@ public class Customer {
                 customers.add(new Customer(customer[0], customer[1], Double.valueOf(customer[2]), Boolean.valueOf(customer[3])));
             }
         }
+        System.out.println(customers);
         return customers;
     }
 
@@ -37,7 +39,7 @@ public class Customer {
     //TODO: WRITE NEW BALANCE IN CSV FILE
     public void withdraw(double amount, Customer c) {
         // Withdraw the amount from the balance
-        if (amount >  c.balance|| amount > ATM.currentMoney) {
+        if (amount > c.balance || amount > ATM.currentMoney) {
             System.out.println("ATM.currentMoney: " + ATM.currentMoney + "\n" + "Current Money User: " + balance);
             System.out.println("Withdraw amount exceeds allowed amount.");
             Logging.writeLog(10, amount, cardnumber, "");
