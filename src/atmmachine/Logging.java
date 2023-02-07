@@ -25,11 +25,11 @@ public class Logging {
             switch (type) {
                 case 1 -> {
                     log = "[" + cardnumber + "]: " + "Deposit -> " + amount + "$ ";
-                    ATM.addMoney();
+                    ATM.currentMoney += amount;
                 }
                 case 2 -> {
                     log = "[" + cardnumber + "]: " + "Withdrawal -> " + amount + "$ ";
-                    ATM.subtractMoney(amount);
+                    ATM.currentMoney -= amount;
                 }
                 case 3 -> log = "[" + cardnumber + "]: " + "Login ";
                 case 4 -> log = "[" + cardnumber + "]: " + "Logout ";
@@ -43,7 +43,7 @@ public class Logging {
             bw.write(log + "(" + timestamp + ")"); //write timestamp to file
             bw.newLine();
         } catch (IOException e) { //if file can't be created
-            e.printStackTrace();
+            System.out.println("IO Exception");
         }
     }
 }

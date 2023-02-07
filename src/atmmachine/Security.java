@@ -1,61 +1,49 @@
 package atmmachine;
 
-import java.security.NoSuchAlgorithmException;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
-
 /**
- * This class is used to encrypt passwords.
+ * This class is used to encrypt the pin of the user using the MD5 Algorithm.
  **/
-
 public class Security {
-    String pin = "";
+    private String pin;
 
-    private Security(String pin) {
+    public Security(String pin) {
         this.pin = pin;
     }
 
     public static String encrypt(String pin) {
-        String encryptedPin = "";
         try {
-            //MessageDigest --> This class provides applications the functionality of a message digest algorithm, such as SHA-1 or SHA-256.
-            MessageDigest m = MessageDigest.getInstance("MD5"); //MD5 hashing algorithm
+            // Create a MessageDigest instance with MD5 algorithm
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
 
-            /* Add plain-text password bytes to digest using MD5 update() method. */
-            m.update(pin.getBytes());
+            // Add the pin to the digest
+            messageDigest.update(pin.getBytes());
 
-            byte[] bytes = m.digest();  //Convert the hash value into byte
+            // Convert the hash value into bytes
+            byte[] bytes = messageDigest.digest();
 
-            /* The bytes array has bytes in decimal form. Converting it into hexadecimal format. */
-            StringBuilder s = new StringBuilder();
+            // Convert the bytes array into hexadecimal format
+            StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < bytes.length; i++) {
-                s.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+                stringBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
             }
 
-            /* Complete hashed password in hexadecimal format */
-            encryptedPin = s.toString();
+            // Return the complete hashed password in hexadecimal format
+            return stringBuilder.toString();
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            // If the specified algorithm is not available in the environment
+            System.out.println("The specified algorithm is not available in the environment");
+            return "";
         }
-        return encryptedPin;
     }
 
-    //TODO: Lock user after 3 attempts to login with false pin
-
-    public static void lockUser(String cardnumber) {
-
-    }
-
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the pin: ");
-        String pin = sc.nextLine();
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter pin: ");
+        String pin = input.nextLine();
         System.out.println("Encrypted pin: " + Security.encrypt(pin));
     }
 }
-
-
-
-
-

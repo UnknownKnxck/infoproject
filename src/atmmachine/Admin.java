@@ -12,32 +12,24 @@ public class Admin {
     }
 
     public static String[] addCustomer() {
-        //Input of cardnumber and pin
+        String admin = "false";
         Scanner input = new Scanner(System.in);
 
         System.out.print("Enter cardnumber you would like to add: ");
         String cardnumber = input.nextLine();
-
         System.out.print("Enter pin of the user: ");
         String pin = Security.encrypt(input.nextLine());
-
         System.out.print("Enter balance of the user: ");
         String balance = input.nextLine();
 
-        String admin = "false";
-
-
         return new String[]{cardnumber, pin, balance, admin};
-
     }
-
 
     public static String[] deleteCustomer() {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Enter cardnumber you would like to remove: ");
         String cardnumber = input.nextLine();
-
 
         return new String[]{cardnumber, null};
     }
